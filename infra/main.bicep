@@ -1,4 +1,4 @@
-targetScope = 'subscription'
+targetScope = 'resourceGroup'
 
 @minLength(1)
 @maxLength(64)
@@ -7,7 +7,7 @@ param environmentName string
 
 @minLength(1)
 @description('Primary location for all resources')
-param location string
+param location string = resourceGroup().location
 
 param appServicePlanName string = '' // Set in main.parameters.json
 param backendServiceName string = '' // Set in main.parameters.json
@@ -315,48 +315,48 @@ var allMsftAllowedOrigins = !(empty(clientAppId)) ? union(msftAllowedOrigins, [ 
 var allowedOrigins = reduce(filter(union(split(allowedOrigin, ';'), allMsftAllowedOrigins), o => length(trim(o)) > 0), [], (cur, next) => union(cur, [next]))
 
 // Organize resources in a resource group
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' = {
-  name: !empty(resourceGroupName) ? resourceGroupName : '${abbrs.resourcesResourceGroups}${environmentName}'
-  location: location
-  tags: tags
-}
+// resource resourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' = {
+//   name: !empty(resourceGroupName) ? resourceGroupName : '${abbrs.resourcesResourceGroups}${environmentName}'
+//   location: location
+//   tags: tags
+// }
 
-resource openAiResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(openAiResourceGroupName)) {
-  name: !empty(openAiResourceGroupName) ? openAiResourceGroupName : resourceGroup.name
-}
+// resource openAiResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing =  {
+//   name: resourceGroup().name
+// }
 
-resource documentIntelligenceResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(documentIntelligenceResourceGroupName)) {
-  name: !empty(documentIntelligenceResourceGroupName) ? documentIntelligenceResourceGroupName : resourceGroup.name
-}
+// resource documentIntelligenceResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing =  {
+//   name: resourceGroup().name
+// }
 
-resource computerVisionResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(computerVisionResourceGroupName)) {
-  name: !empty(computerVisionResourceGroupName) ? computerVisionResourceGroupName : resourceGroup.name
-}
+// resource computerVisionResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
+//   name: resourceGroup().name
+// }
 
-resource contentUnderstandingResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(contentUnderstandingResourceGroupName)) {
-  name: !empty(contentUnderstandingResourceGroupName) ? contentUnderstandingResourceGroupName : resourceGroup.name
-}
+// resource contentUnderstandingResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
+//   name: resourceGroup().name
+// }
 
-resource searchServiceResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(searchServiceResourceGroupName)) {
-  name: !empty(searchServiceResourceGroupName) ? searchServiceResourceGroupName : resourceGroup.name
-}
+// resource searchServiceResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
+//   name: resourceGroup().name
+// }
 
-resource storageResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(storageResourceGroupName)) {
-  name: !empty(storageResourceGroupName) ? storageResourceGroupName : resourceGroup.name
-}
+// resource storageResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
+//   name: resourceGroup().name
+// }
 
-resource speechResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(speechServiceResourceGroupName)) {
-  name: !empty(speechServiceResourceGroupName) ? speechServiceResourceGroupName : resourceGroup.name
-}
+// resource speechResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing =  {
+//   name: resourceGroup().name
+// }
 
-resource cosmosDbResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = if (!empty(cosmodDbResourceGroupName)) {
-  name: !empty(cosmodDbResourceGroupName) ? cosmodDbResourceGroupName : resourceGroup.name
-}
+// resource cosmosDbResourceGroup 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
+//   name: resourceGroup().name
+// }
 
 // Monitor application with Azure Monitor
 module monitoring 'core/monitor/monitoring.bicep' = if (useApplicationInsights) {
   name: 'monitoring'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     location: location
     tags: tags
@@ -372,7 +372,7 @@ module monitoring 'core/monitor/monitoring.bicep' = if (useApplicationInsights) 
 
 module applicationInsightsDashboard 'backend-dashboard.bicep' = if (useApplicationInsights) {
   name: 'application-insights-dashboard'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(applicationInsightsDashboardName)
       ? applicationInsightsDashboardName
@@ -385,7 +385,7 @@ module applicationInsightsDashboard 'backend-dashboard.bicep' = if (useApplicati
 // Create an App Service Plan to group applications under the same payment plan and SKU
 module appServicePlan 'core/host/appserviceplan.bicep' = if (deploymentTarget == 'appservice') {
   name: 'appserviceplan'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(appServicePlanName) ? appServicePlanName : '${abbrs.webServerFarms}${resourceToken}'
     location: location
@@ -476,7 +476,7 @@ var appEnvVariables = {
 // App Service for the web application (Python Quart app with JS frontend)
 module backend 'core/host/appservice.bicep' = if (deploymentTarget == 'appservice') {
   name: 'web'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(backendServiceName) ? backendServiceName : '${abbrs.webSitesAppService}backend-${resourceToken}'
     location: location
@@ -511,7 +511,7 @@ module backend 'core/host/appservice.bicep' = if (deploymentTarget == 'appservic
 // User-assigned identity for pulling images from ACR
 module acaIdentity 'core/security/aca-identity.bicep' = if (deploymentTarget == 'containerapps') {
   name: 'aca-identity'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     identityName: acaIdentityName
     location: location
@@ -520,7 +520,7 @@ module acaIdentity 'core/security/aca-identity.bicep' = if (deploymentTarget == 
 
 module containerApps 'core/host/container-apps.bicep' = if (deploymentTarget == 'containerapps') {
   name: 'container-apps'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     name: 'app'
     tags: tags
@@ -535,7 +535,7 @@ module containerApps 'core/host/container-apps.bicep' = if (deploymentTarget == 
 // Container Apps for the web application (Python Quart app with JS frontend)
 module acaBackend 'core/host/container-app-upsert.bicep' = if (deploymentTarget == 'containerapps') {
   name: 'aca-web'
-  scope: resourceGroup
+  scope: resourceGroup()
   dependsOn: [
     containerApps
     acaIdentity
@@ -578,7 +578,7 @@ module acaBackend 'core/host/container-app-upsert.bicep' = if (deploymentTarget 
 
 module acaAuth 'core/host/container-apps-auth.bicep' = if (deploymentTarget == 'containerapps' && !empty(clientAppId)) {
   name: 'aca-auth'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     name: acaBackend.outputs.name
     clientAppId: clientAppId
@@ -671,7 +671,7 @@ var openAiDeployments = concat(
 
 module openAi 'br/public:avm/res/cognitive-services/account:0.7.2' = if (isAzureOpenAiHost && deployAzureOpenAi) {
   name: 'openai'
-  scope: openAiResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(openAiServiceName) ? openAiServiceName : '${abbrs.cognitiveServicesAccounts}${resourceToken}'
     location: openAiLocation
@@ -695,7 +695,7 @@ module openAi 'br/public:avm/res/cognitive-services/account:0.7.2' = if (isAzure
 // Does not support bypass
 module documentIntelligence 'br/public:avm/res/cognitive-services/account:0.7.2' = {
   name: 'documentintelligence'
-  scope: documentIntelligenceResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(documentIntelligenceServiceName)
       ? documentIntelligenceServiceName
@@ -717,7 +717,7 @@ module documentIntelligence 'br/public:avm/res/cognitive-services/account:0.7.2'
 
 module computerVision 'br/public:avm/res/cognitive-services/account:0.7.2' = if (useGPT4V) {
   name: 'computerVision'
-  scope: computerVisionResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(computerVisionServiceName)
       ? computerVisionServiceName
@@ -738,7 +738,7 @@ module computerVision 'br/public:avm/res/cognitive-services/account:0.7.2' = if 
 
 module contentUnderstanding 'br/public:avm/res/cognitive-services/account:0.7.2' = if (useMediaDescriberAzureCU) {
   name: 'content-understanding'
-  scope: contentUnderstandingResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(contentUnderstandingServiceName)
       ? contentUnderstandingServiceName
@@ -759,7 +759,7 @@ module contentUnderstanding 'br/public:avm/res/cognitive-services/account:0.7.2'
 
 module speech 'br/public:avm/res/cognitive-services/account:0.7.2' = if (useSpeechOutputAzure) {
   name: 'speech-service'
-  scope: speechResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(speechServiceName) ? speechServiceName : '${abbrs.cognitiveServicesSpeech}${resourceToken}'
     kind: 'SpeechServices'
@@ -776,7 +776,7 @@ module speech 'br/public:avm/res/cognitive-services/account:0.7.2' = if (useSpee
 }
 module searchService 'core/search/search-services.bicep' = {
   name: 'search-service'
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(searchServiceName) ? searchServiceName : 'gptkb-${resourceToken}'
     location: !empty(searchServiceLocation) ? searchServiceLocation : location
@@ -795,7 +795,7 @@ module searchService 'core/search/search-services.bicep' = {
 
 module searchDiagnostics 'core/search/search-diagnostics.bicep' = if (useApplicationInsights) {
   name: 'search-diagnostics'
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   params: {
     searchServiceName: searchService.outputs.name
     workspaceId: useApplicationInsights ? monitoring.outputs.logAnalyticsWorkspaceId : ''
@@ -804,7 +804,7 @@ module searchDiagnostics 'core/search/search-diagnostics.bicep' = if (useApplica
 
 module storage 'core/storage/storage-account.bicep' = {
   name: 'storage'
-  scope: storageResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(storageAccountName) ? storageAccountName : '${abbrs.storageStorageAccounts}${resourceToken}'
     location: storageResourceGroupLocation
@@ -835,7 +835,7 @@ module storage 'core/storage/storage-account.bicep' = {
 
 module userStorage 'core/storage/storage-account.bicep' = if (useUserUpload) {
   name: 'user-storage'
-  scope: storageResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(userStorageAccountName)
       ? userStorageAccountName
@@ -861,7 +861,7 @@ module userStorage 'core/storage/storage-account.bicep' = if (useUserUpload) {
 
 module cosmosDb 'br/public:avm/res/document-db/database-account:0.6.1' = if (useAuthentication && useChatHistoryCosmos) {
   name: 'cosmosdb'
-  scope: cosmosDbResourceGroup
+  scope: resourceGroup()
   params: {
     name: !empty(cosmosDbAccountName) ? cosmosDbAccountName : '${abbrs.documentDBDatabaseAccounts}${resourceToken}'
     location: !empty(cosmosDbLocation) ? cosmosDbLocation : location
@@ -924,7 +924,7 @@ module cosmosDb 'br/public:avm/res/document-db/database-account:0.6.1' = if (use
 
 module ai 'core/ai/ai-environment.bicep' = if (useAiProject) {
   name: 'ai'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     // Limited region support: https://learn.microsoft.com/azure/ai-foundry/how-to/develop/evaluate-sdk#region-support
     location: 'eastus2'
@@ -941,7 +941,7 @@ module ai 'core/ai/ai-environment.bicep' = if (useAiProject) {
 var principalType = empty(runningOnGh) && empty(runningOnAdo) ? 'User' : 'ServicePrincipal'
 
 module openAiRoleUser 'core/security/role.bicep' = if (isAzureOpenAiHost && deployAzureOpenAi) {
-  scope: openAiResourceGroup
+  scope: resourceGroup()
   name: 'openai-role-user'
   params: {
     principalId: principalId
@@ -952,7 +952,7 @@ module openAiRoleUser 'core/security/role.bicep' = if (isAzureOpenAiHost && depl
 
 // For both document intelligence and computer vision
 module cognitiveServicesRoleUser 'core/security/role.bicep' = {
-  scope: resourceGroup
+  scope: resourceGroup()
   name: 'cognitiveservices-role-user'
   params: {
     principalId: principalId
@@ -962,7 +962,7 @@ module cognitiveServicesRoleUser 'core/security/role.bicep' = {
 }
 
 module speechRoleUser 'core/security/role.bicep' = {
-  scope: speechResourceGroup
+  scope: resourceGroup()
   name: 'speech-role-user'
   params: {
     principalId: principalId
@@ -972,7 +972,7 @@ module speechRoleUser 'core/security/role.bicep' = {
 }
 
 module storageRoleUser 'core/security/role.bicep' = {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-role-user'
   params: {
     principalId: principalId
@@ -982,7 +982,7 @@ module storageRoleUser 'core/security/role.bicep' = {
 }
 
 module storageContribRoleUser 'core/security/role.bicep' = {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-contrib-role-user'
   params: {
     principalId: principalId
@@ -992,7 +992,7 @@ module storageContribRoleUser 'core/security/role.bicep' = {
 }
 
 module storageOwnerRoleUser 'core/security/role.bicep' = if (useUserUpload) {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-owner-role-user'
   params: {
     principalId: principalId
@@ -1002,7 +1002,7 @@ module storageOwnerRoleUser 'core/security/role.bicep' = if (useUserUpload) {
 }
 
 module searchRoleUser 'core/security/role.bicep' = {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-role-user'
   params: {
     principalId: principalId
@@ -1012,7 +1012,7 @@ module searchRoleUser 'core/security/role.bicep' = {
 }
 
 module searchContribRoleUser 'core/security/role.bicep' = {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-contrib-role-user'
   params: {
     principalId: principalId
@@ -1022,7 +1022,7 @@ module searchContribRoleUser 'core/security/role.bicep' = {
 }
 
 module searchSvcContribRoleUser 'core/security/role.bicep' = {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-svccontrib-role-user'
   params: {
     principalId: principalId
@@ -1032,7 +1032,7 @@ module searchSvcContribRoleUser 'core/security/role.bicep' = {
 }
 
 module cosmosDbAccountContribRoleUser 'core/security/role.bicep' = if (useAuthentication && useChatHistoryCosmos) {
-  scope: cosmosDbResourceGroup
+  scope: resourceGroup()
   name: 'cosmosdb-account-contrib-role-user'
   params: {
     principalId: principalId
@@ -1044,7 +1044,7 @@ module cosmosDbAccountContribRoleUser 'core/security/role.bicep' = if (useAuthen
 // RBAC for Cosmos DB
 // https://learn.microsoft.com/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access
 module cosmosDbDataContribRoleUser 'core/security/documentdb-sql-role.bicep' = if (useAuthentication && useChatHistoryCosmos) {
-  scope: cosmosDbResourceGroup
+  scope: resourceGroup()
   name: 'cosmosdb-data-contrib-role-user'
   params: {
     databaseAccountName: (useAuthentication && useChatHistoryCosmos) ? cosmosDb.outputs.name : ''
@@ -1058,7 +1058,7 @@ module cosmosDbDataContribRoleUser 'core/security/documentdb-sql-role.bicep' = i
 
 // SYSTEM IDENTITIES
 module openAiRoleBackend 'core/security/role.bicep' = if (isAzureOpenAiHost && deployAzureOpenAi) {
-  scope: openAiResourceGroup
+  scope: resourceGroup()
   name: 'openai-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1070,7 +1070,7 @@ module openAiRoleBackend 'core/security/role.bicep' = if (isAzureOpenAiHost && d
 }
 
 module openAiRoleSearchService 'core/security/role.bicep' = if (isAzureOpenAiHost && deployAzureOpenAi && (useIntegratedVectorization || useAgenticRetrieval)) {
-  scope: openAiResourceGroup
+  scope: resourceGroup()
   name: 'openai-role-searchservice'
   params: {
     principalId: searchService.outputs.principalId
@@ -1080,7 +1080,7 @@ module openAiRoleSearchService 'core/security/role.bicep' = if (isAzureOpenAiHos
 }
 
 module storageRoleBackend 'core/security/role.bicep' = {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1092,7 +1092,7 @@ module storageRoleBackend 'core/security/role.bicep' = {
 }
 
 module storageOwnerRoleBackend 'core/security/role.bicep' = if (useUserUpload) {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-owner-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1104,7 +1104,7 @@ module storageOwnerRoleBackend 'core/security/role.bicep' = if (useUserUpload) {
 }
 
 module storageRoleSearchService 'core/security/role.bicep' = if (useIntegratedVectorization) {
-  scope: storageResourceGroup
+  scope: resourceGroup()
   name: 'storage-role-searchservice'
   params: {
     principalId: searchService.outputs.principalId
@@ -1116,7 +1116,7 @@ module storageRoleSearchService 'core/security/role.bicep' = if (useIntegratedVe
 // Used to issue search queries
 // https://learn.microsoft.com/azure/search/search-security-rbac
 module searchRoleBackend 'core/security/role.bicep' = {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1128,7 +1128,7 @@ module searchRoleBackend 'core/security/role.bicep' = {
 }
 
 module speechRoleBackend 'core/security/role.bicep' = {
-  scope: speechResourceGroup
+  scope: resourceGroup()
   name: 'speech-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1142,7 +1142,7 @@ module speechRoleBackend 'core/security/role.bicep' = {
 // RBAC for Cosmos DB
 // https://learn.microsoft.com/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access
 module cosmosDbRoleBackend 'core/security/documentdb-sql-role.bicep' = if (useAuthentication && useChatHistoryCosmos) {
-  scope: cosmosDbResourceGroup
+  scope: resourceGroup()
   name: 'cosmosdb-role-backend'
   params: {
     databaseAccountName: (useAuthentication && useChatHistoryCosmos) ? cosmosDb.outputs.name : ''
@@ -1158,7 +1158,7 @@ module cosmosDbRoleBackend 'core/security/documentdb-sql-role.bicep' = if (useAu
 
 module isolation 'network-isolation.bicep' = {
   name: 'networks'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     deploymentTarget: deploymentTarget
     location: location
@@ -1215,7 +1215,7 @@ var privateEndpointConnections = concat(otherPrivateEndpointConnections, openAiP
 
 module privateEndpoints 'private-endpoints.bicep' = if (usePrivateEndpoint && deploymentTarget == 'appservice') {
   name: 'privateEndpoints'
-  scope: resourceGroup
+  scope: resourceGroup()
   params: {
     location: location
     tags: tags
@@ -1231,7 +1231,7 @@ module privateEndpoints 'private-endpoints.bicep' = if (usePrivateEndpoint && de
 // Used to read index definitions (required when using authentication)
 // https://learn.microsoft.com/azure/search/search-security-rbac
 module searchReaderRoleBackend 'core/security/role.bicep' = if (useAuthentication) {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-reader-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1244,7 +1244,7 @@ module searchReaderRoleBackend 'core/security/role.bicep' = if (useAuthenticatio
 
 // Used to add/remove documents from index (required for user upload feature)
 module searchContribRoleBackend 'core/security/role.bicep' = if (useUserUpload) {
-  scope: searchServiceResourceGroup
+  scope: resourceGroup()
   name: 'search-contrib-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1257,7 +1257,7 @@ module searchContribRoleBackend 'core/security/role.bicep' = if (useUserUpload) 
 
 // For computer vision access by the backend
 module computerVisionRoleBackend 'core/security/role.bicep' = if (useGPT4V) {
-  scope: computerVisionResourceGroup
+  scope: resourceGroup()
   name: 'computervision-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1270,7 +1270,7 @@ module computerVisionRoleBackend 'core/security/role.bicep' = if (useGPT4V) {
 
 // For document intelligence access by the backend
 module documentIntelligenceRoleBackend 'core/security/role.bicep' = if (useUserUpload) {
-  scope: documentIntelligenceResourceGroup
+  scope: resourceGroup()
   name: 'documentintelligence-role-backend'
   params: {
     principalId: (deploymentTarget == 'appservice')
@@ -1284,7 +1284,7 @@ module documentIntelligenceRoleBackend 'core/security/role.bicep' = if (useUserU
 output AZURE_LOCATION string = location
 output AZURE_TENANT_ID string = tenantId
 output AZURE_AUTH_TENANT_ID string = authTenantId
-output AZURE_RESOURCE_GROUP string = resourceGroup.name
+output AZURE_RESOURCE_GROUP string = resourceGroup().name
 
 // Shared by all OpenAI deployments
 output OPENAI_HOST string = openAiHost
@@ -1297,7 +1297,7 @@ output AZURE_OPENAI_GPT4V_MODEL string = gpt4v.modelName
 output AZURE_OPENAI_SERVICE string = isAzureOpenAiHost && deployAzureOpenAi ? openAi.outputs.name : ''
 output AZURE_OPENAI_ENDPOINT string = isAzureOpenAiHost && deployAzureOpenAi ? openAi.outputs.endpoint : ''
 output AZURE_OPENAI_API_VERSION string = isAzureOpenAiHost ? azureOpenAiApiVersion : ''
-output AZURE_OPENAI_RESOURCE_GROUP string = isAzureOpenAiHost ? openAiResourceGroup.name : ''
+output AZURE_OPENAI_RESOURCE_GROUP string = isAzureOpenAiHost ? resourceGroup().name : ''
 output AZURE_OPENAI_CHATGPT_DEPLOYMENT string = isAzureOpenAiHost ? chatGpt.deploymentName : ''
 output AZURE_OPENAI_CHATGPT_DEPLOYMENT_VERSION string = isAzureOpenAiHost ? chatGpt.deploymentVersion : ''
 output AZURE_OPENAI_CHATGPT_DEPLOYMENT_SKU string = isAzureOpenAiHost ? chatGpt.deploymentSkuName : ''
@@ -1321,12 +1321,12 @@ output AZURE_VISION_ENDPOINT string = useGPT4V ? computerVision.outputs.endpoint
 output AZURE_CONTENTUNDERSTANDING_ENDPOINT string = useMediaDescriberAzureCU ? contentUnderstanding.outputs.endpoint : ''
 
 output AZURE_DOCUMENTINTELLIGENCE_SERVICE string = documentIntelligence.outputs.name
-output AZURE_DOCUMENTINTELLIGENCE_RESOURCE_GROUP string = documentIntelligenceResourceGroup.name
+output AZURE_DOCUMENTINTELLIGENCE_RESOURCE_GROUP string = resourceGroup().name
 
 output AZURE_SEARCH_INDEX string = searchIndexName
 output AZURE_SEARCH_AGENT string = searchAgentName
 output AZURE_SEARCH_SERVICE string = searchService.outputs.name
-output AZURE_SEARCH_SERVICE_RESOURCE_GROUP string = searchServiceResourceGroup.name
+output AZURE_SEARCH_SERVICE_RESOURCE_GROUP string = resourceGroup().name
 output AZURE_SEARCH_SEMANTIC_RANKER string = actualSearchServiceSemanticRankerLevel
 output AZURE_SEARCH_SERVICE_ASSIGNED_USERID string = searchService.outputs.principalId
 output AZURE_SEARCH_FIELD_NAME_EMBEDDING string = searchFieldNameEmbedding
@@ -1338,11 +1338,11 @@ output AZURE_CHAT_HISTORY_VERSION string = chatHistoryVersion
 
 output AZURE_STORAGE_ACCOUNT string = storage.outputs.name
 output AZURE_STORAGE_CONTAINER string = storageContainerName
-output AZURE_STORAGE_RESOURCE_GROUP string = storageResourceGroup.name
+output AZURE_STORAGE_RESOURCE_GROUP string = resourceGroup().name
 
 output AZURE_USERSTORAGE_ACCOUNT string = useUserUpload ? userStorage.outputs.name : ''
 output AZURE_USERSTORAGE_CONTAINER string = userStorageContainerName
-output AZURE_USERSTORAGE_RESOURCE_GROUP string = storageResourceGroup.name
+output AZURE_USERSTORAGE_RESOURCE_GROUP string = resourceGroup().name
 
 output AZURE_AI_PROJECT string = useAiProject ? ai.outputs.projectName : ''
 

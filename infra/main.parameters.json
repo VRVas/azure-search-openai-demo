@@ -6,7 +6,7 @@
       "value": "${AZURE_ENV_NAME}"
     },
     "resourceGroupName": {
-      "value": "${AZURE_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "location": {
       "value": "${AZURE_LOCATION}"
@@ -18,7 +18,7 @@
       "value": "${AZURE_OPENAI_SERVICE}"
     },
     "openAiResourceGroupName": {
-      "value": "${AZURE_OPENAI_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "openAiLocation": {
       "value": "${AZURE_OPENAI_LOCATION}"
@@ -30,7 +30,7 @@
       "value": "${AZURE_COMPUTER_VISION_SERVICE}"
     },
     "computerVisionResourceGroupName": {
-      "value": "${AZURE_COMPUTER_VISION_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "computerVisionResourceGroupLocation": {
       "value": "${AZURE_COMPUTER_VISION_LOCATION=eastus}"
@@ -42,13 +42,13 @@
       "value": "${AZURE_CONTENT_UNDERSTANDING_SERVICE}"
     },
     "contentUnderstandingResourceGroupName": {
-      "value": "${AZURE_CONTENT_UNDERSTANDING_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "documentIntelligenceServiceName": {
       "value": "${AZURE_DOCUMENTINTELLIGENCE_SERVICE}"
     },
     "documentIntelligenceResourceGroupName": {
-      "value": "${AZURE_DOCUMENTINTELLIGENCE_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "documentIntelligenceSkuName": {
       "value": "${AZURE_DOCUMENTINTELLIGENCE_SKU=S0}"
@@ -63,7 +63,7 @@
       "value": "${AZURE_SEARCH_SERVICE}"
     },
     "searchServiceResourceGroupName": {
-      "value": "${AZURE_SEARCH_SERVICE_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "searchServiceLocation": {
       "value": "${AZURE_SEARCH_SERVICE_LOCATION}"
@@ -93,7 +93,7 @@
       "value": "${AZURE_STORAGE_ACCOUNT}"
     },
     "storageResourceGroupName": {
-      "value": "${AZURE_STORAGE_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "storageSkuName": {
       "value": "${AZURE_STORAGE_SKU=Standard_LRS}"
@@ -246,7 +246,7 @@
       "value": "${AZURE_SPEECH_SERVICE_SKU=S0}"
     },
     "speechServiceResourceGroupName": {
-      "value": "${AZURE_SPEECH_SERVICE_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "speechServiceLocation": {
       "value": "${AZURE_SPEECH_SERVICE_LOCATION}"
@@ -261,7 +261,7 @@
       "value": "${AZURE_COSMOSDB_SKU=serverless}"
     },
     "cosmodDbResourceGroupName": {
-      "value": "${AZURE_COSMOSDB_RESOURCE_GROUP}"
+      "value": "RG-UC07-QC-01"
     },
     "cosmosDbLocation": {
       "value": "${AZURE_COSMOSDB_LOCATION}"

@@ -34,12 +34,39 @@ const router = createHashRouter([
     }
 ]);
 
+// Helper to determine the direction based on language
+const getDirection = (lng: string) => (lng === "ar" ? "rtl" : "ltr");
+
+function AppRoot() {
+    // This makes sure direction updates if the language is switched at runtime
+    const [dir, setDir] = React.useState(getDirection(i18next.language));
+
+    React.useEffect(() => {
+        const handleLangChange = (lng: string) => setDir(getDirection(lng));
+        i18next.on("languageChanged", handleLangChange);
+        return () => {
+            i18next.off("languageChanged", handleLangChange);
+        };
+    }, []);
+
+    // Optionally, also set <body> dir for full page styling
+    React.useEffect(() => {
+        document.body.dir = dir;
+    }, [dir]);
+
+    return (
+        <div dir={dir} style={{ minHeight: "100vh" }}>
+            <I18nextProvider i18n={i18next}>
+                <HelmetProvider>
+                    <RouterProvider router={router} />
+                </HelmetProvider>
+            </I18nextProvider>
+        </div>
+    );
+}
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <I18nextProvider i18n={i18next}>
-            <HelmetProvider>
-                <RouterProvider router={router} />
-            </HelmetProvider>
-        </I18nextProvider>
+        <AppRoot />
     </React.StrictMode>
 );
