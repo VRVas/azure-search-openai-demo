@@ -1,0 +1,191 @@
+/* Arabic and RTL language support with Rubik font */
+
+/* Ensure proper text direction for Arabic content */
+[dir="rtl"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Arabic language specific styling */
+[lang="ar"],
+[lang="ar-QA"],
+[lang="ar-SA"],
+[lang="ar-EG"] {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif !important;
+    text-align: right;
+    direction: rtl;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+}
+
+/* Better Arabic text rendering for specific components */
+.arabic-text {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+    word-spacing: 0.1em;
+}
+
+/* Mixed content (Arabic + English) */
+.mixed-content {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: start;
+    unicode-bidi: plaintext;
+}
+
+/* Chat messages in Arabic */
+.chat-message[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Input fields for Arabic */
+input[lang="ar"],
+textarea[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Button text in Arabic */
+button[lang="ar"],
+.button-arabic {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+}
+
+/* Ensure proper spacing for Arabic characters */
+.arabic-text p,
+.mixed-content p {
+    margin-bottom: 1em;
+    word-spacing: 0.1em;
+}
+
+/* Better number formatting in Arabic context */
+.arabic-numbers {
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Improved list styling for Arabic */
+ul[lang="ar"],
+ol[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+ul[lang="ar"] li,
+ol[lang="ar"] li {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Code blocks should remain LTR even in Arabic context */
+code,
+pre {
+    direction: ltr;
+    text-align: left;
+    font-family: "Fira Code", "Courier New", monospace !important;
+}
+
+/* Headings in Arabic */
+h1[lang="ar"],
+h2[lang="ar"],
+h3[lang="ar"],
+h4[lang="ar"],
+h5[lang="ar"],
+h6[lang="ar"] {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    text-align: right;
+    direction: rtl;
+    font-weight: 600;
+}
+
+/* Form elements in Arabic context */
+.form-group[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+.form-group[lang="ar"] label {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Navigation elements in Arabic */
+.nav[lang="ar"],
+.navigation[lang="ar"] {
+    direction: rtl;
+}
+
+.nav[lang="ar"] a,
+.navigation[lang="ar"] a {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Table content in Arabic */
+table[lang="ar"] {
+    direction: rtl;
+}
+
+table[lang="ar"] th,
+table[lang="ar"] td {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Search and input components */
+.search-box[lang="ar"] {
+    direction: rtl;
+}
+
+.search-box[lang="ar"] input {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Modal and dialog content */
+.modal[lang="ar"],
+.dialog[lang="ar"] {
+    direction: rtl;
+}
+
+.modal[lang="ar"] .modal-content,
+.dialog[lang="ar"] .dialog-content {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Tooltip and popup content */
+.tooltip[lang="ar"],
+.popup[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Ensure icons and symbols align properly in RTL */
+.rtl-icon {
+    transform: scaleX(-1);
+}
+
+/* Loading indicators and progress bars */
+.loading[lang="ar"],
+.progress[lang="ar"] {
+    direction: rtl;
+}
+
+/* Error and success messages */
+.error[lang="ar"],
+.success[lang="ar"],
+.warning[lang="ar"],
+.info[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}

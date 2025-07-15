@@ -6,6 +6,7 @@ html {
     background: #f2f2f2;
     font-size: 12px; /* Root font size for 320px width screens */
     font-family:
+        "Rubik",
         "Segoe UI",
         -apple-system,
         BlinkMacSystemFont,
@@ -19,6 +20,12 @@ html {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Enhanced text rendering for better Arabic support */
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+    text-rendering: optimizeLegibility;
 }
 
 body {
@@ -53,4 +60,31 @@ body {
     html {
         font-size: 16px; /* Standard size for desktops */
     }
+}
+
+/* Arabic language and RTL support */
+html[lang="ar"],
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Improved Arabic text rendering */
+*[lang="ar"],
+*[lang="ar-QA"],
+.arabic-text {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+}
+
+/* Mixed content support (Arabic + English) */
+.mixed-content {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    unicode-bidi: plaintext;
+    text-align: start;
 }
