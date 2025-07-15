@@ -11,19 +11,54 @@
 
 .example {
     word-break: break-word;
-    background: #dbdbdb;
-    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9));
+    border: 2px solid rgba(66, 178, 136, 0.2);
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     margin-bottom: 0.3125rem;
     cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.example::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(66, 178, 136, 0.1), transparent);
+    transition: left 0.5s;
 }
 
 .example:hover {
+    background: linear-gradient(135deg, rgba(66, 178, 136, 0.1), rgba(66, 178, 136, 0.05));
+    border-color: rgba(66, 178, 136, 0.6);
+    transform: translateY(-4px);
     box-shadow:
-        0rem 0.5rem 1rem rgba(0, 0, 0, 0.14),
-        0rem 0rem 0.125rem rgba(0, 0, 0, 0.12);
-    outline: 0.125rem solid rgba(115, 118, 225, 1);
+        0 12px 24px rgba(66, 178, 136, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.example:hover::before {
+    left: 100%;
+}
+
+.example:active {
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 16px rgba(66, 178, 136, 0.25),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .exampleText {

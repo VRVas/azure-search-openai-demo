@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Panel, DefaultButton, Spinner } from "@fluentui/react";
 
 import styles from "./Ask.module.css";
+import appLogo from "../../assets/applogo.svg";
 
 import { askApi, configApi, ChatAppResponse, ChatAppRequest, RetrievalMode, VectorFields, GPT4VInput, SpeechConfig } from "../../api";
 import { Answer, AnswerError } from "../../components/Answer";
@@ -287,8 +288,12 @@ export function Component(): JSX.Element {
                 <div className={styles.commandsContainer}>
                     {showUserUpload && <UploadFile className={styles.commandButton} disabled={!loggedIn} />}
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />}
                 </div>
-                <h1 className={styles.askTitle}>{t("askTitle")}</h1>
+                <div className={styles.askLogoContainer}>
+                    <img src={appLogo} alt="App logo" className={styles.askLogo} />
+                    <h1 className={styles.askTitle}>{t("askTitle")}</h1>
+                </div>
                 <div className={styles.askQuestionInput}>
                     <QuestionInput
                         placeholder={t("gpt4vExamples.placeholder")}
@@ -303,7 +308,6 @@ export function Component(): JSX.Element {
                 {isLoading && <Spinner label={t("generatingAnswer")} />}
                 {!lastQuestionRef.current && (
                     <div className={styles.askTopSection}>
-                        {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />}
                         <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
                     </div>
                 )}

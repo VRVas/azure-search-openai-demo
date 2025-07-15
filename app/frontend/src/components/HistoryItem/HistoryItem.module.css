@@ -107,7 +107,7 @@
 }
 
 .modalConfirmButton {
-    background-color: #ef4444;
+    background-color: #42b288;
     color: white;
 }
 
@@ -116,5 +116,5 @@
 }
 
 .modalConfirmButton:hover {
-    background-color: #dc2626;
+    background-color: #369f73;
 }

@@ -3,4 +3,12 @@
     font-weight: 100;
     margin: 0;
     padding: 0.5rem 1rem;
+    background-color: #42b288 !important;
+    color: white !important;
+    border-color: #42b288 !important;
+}
+
+.loginButton:hover {
+    background-color: #369f73 !important;
+    border-color: #369f73 !important;
 }

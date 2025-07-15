@@ -2,7 +2,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
 }
 
 .chatRoot {
@@ -26,14 +25,32 @@
     justify-content: center;
     align-items: center;
     max-height: 64rem;
-    padding-top: 1rem;
+    padding-top: 2rem;
+}
+
+.chatLogoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chatLogo {
+    width: 156px;
+    height: 156px;
+    margin-bottom: 0.75rem;
 }
 
 .chatEmptyStateTitle {
-    font-size: 2.75rem;
+    font-size: 2.2rem;
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 1.875rem;
+    margin-bottom: 0;
+    background: linear-gradient(135deg, #115a9b 0%, #64e4b4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
 }
 
 .chatEmptyStateSubtitle {
@@ -95,13 +112,15 @@
 .commandsSplitContainer {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    padding: 1rem;
+    align-items: flex-start;
 }
 
 .commandsContainer {
     display: flex;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    align-self: flex-end;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .commandButton {
@@ -114,11 +133,16 @@
     }
 
     .chatEmptyState {
-        padding-top: 3.75rem;
+        padding-top: 3rem;
     }
 
     .chatEmptyStateTitle {
-        font-size: 4rem;
+        font-size: 2.8rem;
+    }
+
+    .chatLogo {
+        width: 180px;
+        height: 180px;
     }
 
     .chatInput {
@@ -126,17 +150,16 @@
     }
 
     .commandsSplitContainer {
-        padding-left: 1rem;
+        padding: 1rem 2rem;
     }
 
     .commandsContainer {
-        padding-left: 0rem;
-        padding-right: 0rem;
+        gap: 1rem;
     }
 
     .commandButton {
-        margin-right: 1.25rem;
-        margin-bottom: 1.25rem;
+        margin-right: 0;
+        margin-bottom: 0;
     }
 
     .chatMessageGpt {
