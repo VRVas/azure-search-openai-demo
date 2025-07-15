@@ -6,6 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { initializeIcons } from "@fluentui/react";
 
 import "./index.css";
+import "./arabic-support.css";
 
 import Chat from "./pages/chat/Chat";
 import LayoutWrapper from "./layoutWrapper";
