@@ -88,3 +88,30 @@ html[dir="rtl"] {
     unicode-bidi: plaintext;
     text-align: start;
 }
+
+/* Button color overrides */
+/* Primary buttons and FluentUI button overrides */
+button[data-variant="primary"],
+.ms-Button--primary,
+button.ms-Button--primary {
+    background-color: #42b288 !important;
+    border-color: #42b288 !important;
+}
+
+button[data-variant="primary"]:hover,
+.ms-Button--primary:hover,
+button.ms-Button--primary:hover {
+    background-color: #369f73 !important;
+    border-color: #369f73 !important;
+}
+
+/* FluentUI v9 Button component overrides */
+button[data-appearance="primary"] {
+    background-color: #42b288 !important;
+    border-color: #42b288 !important;
+}
+
+button[data-appearance="primary"]:hover {
+    background-color: #369f73 !important;
+    border-color: #369f73 !important;
+}

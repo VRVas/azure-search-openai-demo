@@ -178,91 +178,73 @@ import { LoginButton } from "../../components/LoginButton";
 import { IconButton } from "@fluentui/react";
 
 const Layout = () => {
-  const { t } = useTranslation();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef: RefObject<HTMLDivElement> = useRef(null);
+    const { t } = useTranslation();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const menuRef: RefObject<HTMLDivElement> = useRef(null);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setMenuOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
     };
-  }, [menuOpen]);
 
-  return (
-    <div className={styles.layout}>
-      <header className={styles.header} role="banner">
-        <div className={styles.headerContainer} ref={menuRef}>
-          <Link to="/" className={styles.headerTitleContainer}>
-            <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
-          </Link>
-          <nav className={styles.tabNav}>
-            <ul
-              className={`${styles.headerNavList} ${
-                menuOpen ? styles.show : ""
-              }`}
-            >
-              <li className={styles.tabItem}>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive
-                      ? styles.headerNavPageLinkActive
-                      : styles.headerNavPageLink
-                  }
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t("chat")}
-                </NavLink>
-              </li>
-              <li className={styles.tabItem}>
-                <NavLink
-                  to="/qa"
-                  className={({ isActive }) =>
-                    isActive
-                      ? styles.headerNavPageLinkActive
-                      : styles.headerNavPageLink
-                  }
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t("qa")}
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-          <div className={styles.loginMenuContainer}>
-            {useLogin && <LoginButton />}
-            <IconButton
-              iconProps={{ iconName: "GlobalNavButton" }}
-              className={styles.menuToggle}
-              onClick={toggleMenu}
-              ariaLabel={t("labels.toggleMenu")}
-            />
-          </div>
+    const handleClickOutside = (event: MouseEvent) => {
+        if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+            setMenuOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuOpen]);
+
+    return (
+        <div className={styles.layout}>
+            <header className={styles.header} role="banner">
+                <div className={styles.headerContainer} ref={menuRef}>
+                    {/* Split header navigation */}
+                    <nav className={styles.splitHeaderNav}>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) => `${styles.headerHalf} ${styles.headerHalfLeft} ${isActive ? styles.headerHalfActive : ""}`}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {t("chat")}
+                        </NavLink>
+                        <NavLink
+                            to="/qa"
+                            className={({ isActive }) => `${styles.headerHalf} ${styles.headerHalfRight} ${isActive ? styles.headerHalfActive : ""}`}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {t("qa")}
+                        </NavLink>
+                    </nav>
+
+                    {/* Mobile menu toggle */}
+                    <div className={styles.loginMenuContainer}>
+                        {useLogin && <LoginButton />}
+                        <IconButton
+                            iconProps={{ iconName: "GlobalNavButton" }}
+                            className={styles.menuToggle}
+                            onClick={toggleMenu}
+                            ariaLabel={t("labels.toggleMenu")}
+                        />
+                    </div>
+                </div>
+            </header>
+
+            <main className={styles.main}>
+                <Outlet />
+            </main>
+
+            <footer className={styles.footer}>{t("builtBy")}</footer>
         </div>
-      </header>
-
-      <Outlet />
-
-      <footer className={styles.footer}>
-        {t("builtBy")}
-      </footer>
-    </div>
-  );
+    );
 };
 
 export default Layout;
