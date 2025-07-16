@@ -20,12 +20,28 @@ function isCitationValid(contextDataPoints: any, citationCandidate: string): boo
     } else if (contextDataPoints && Array.isArray(contextDataPoints.text)) {
         dataPointsArray = contextDataPoints.text;
     } else {
-        return false;
+        // If no data points available, still allow citation processing
+        // This ensures citations are always formatted, even if validation fails
+        console.warn("No valid data points found for citation validation, allowing citation:", citationCandidate);
+        return true;
     }
 
     const isValidCitation = dataPointsArray.some(dataPoint => {
-        return dataPoint.startsWith(citationCandidate);
+        // More flexible matching - check if citation is contained in dataPoint or vice versa
+        return (
+            dataPoint.includes(citationCandidate) ||
+            citationCandidate.includes(dataPoint) ||
+            dataPoint.startsWith(citationCandidate) ||
+            // Extract filename and page from both for comparison
+            dataPoint.split(":")[0] === citationCandidate
+        );
     });
+
+    // If validation fails, log for debugging but still allow citation formatting
+    if (!isValidCitation) {
+        console.warn("Citation validation failed for:", citationCandidate, "Available data points:", dataPointsArray);
+        return true; // Changed from false to true to ensure citations are always formatted
+    }
 
     return isValidCitation;
 }
@@ -60,8 +76,10 @@ export function parseAnswerToHtml(answer: ChatAppResponse, isStreaming: boolean,
         } else {
             let citationIndex: number;
 
-            if (!isCitationValid(contextDataPoints, part)) {
-                return `[${part}]`;
+            // Always try to format citations, but log validation issues
+            const isValid = isCitationValid(contextDataPoints, part);
+            if (!isValid) {
+                console.warn("Citation validation failed but proceeding with formatting:", part);
             }
 
             if (citations.indexOf(part) !== -1) {

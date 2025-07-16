@@ -513,6 +513,7 @@ const Chat = () => {
                         citationHeight="810px"
                         answer={answers[selectedAnswer][1]}
                         activeTab={activeAnalysisPanelTab}
+                        onClose={() => setActiveAnalysisPanelTab(undefined)}
                     />
                 )}
 
