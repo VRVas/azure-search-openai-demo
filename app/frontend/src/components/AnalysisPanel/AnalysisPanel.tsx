@@ -1,4 +1,4 @@
-import { Stack, Pivot, PivotItem } from "@fluentui/react";
+import { Stack, Pivot, PivotItem, IconButton } from "@fluentui/react";
 import { useTranslation } from "react-i18next";
 import styles from "./AnalysisPanel.module.css";
 
@@ -19,11 +19,12 @@ interface Props {
     activeCitation: string | undefined;
     citationHeight: string;
     answer: ChatAppResponse;
+    onClose?: () => void;
 }
 
 const pivotItemDisabledStyle = { disabled: true, style: { color: "grey" } };
 
-export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeight, className, onActiveTabChanged }: Props) => {
+export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeight, className, onActiveTabChanged, onClose }: Props) => {
     const isDisabledThoughtProcessTab: boolean = !answer.context.thoughts;
     const isDisabledSupportingContentTab: boolean = !answer.context.data_points;
     const isDisabledCitationTab: boolean = !activeCitation;
@@ -72,32 +73,45 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeigh
     };
 
     return (
-        <Pivot
-            className={className}
-            selectedKey={activeTab}
-            onLinkClick={pivotItem => pivotItem && onActiveTabChanged(pivotItem.props.itemKey! as AnalysisPanelTabs)}
-        >
-            <PivotItem
-                itemKey={AnalysisPanelTabs.ThoughtProcessTab}
-                headerText={t("headerTexts.thoughtProcess")}
-                headerButtonProps={isDisabledThoughtProcessTab ? pivotItemDisabledStyle : undefined}
+        <div className={styles.analysisPanelContainer}>
+            {onClose && (
+                <div className={styles.analysisPanelHeader}>
+                    <IconButton
+                        iconProps={{ iconName: "Cancel" }}
+                        title={t("labels.close")}
+                        ariaLabel={t("labels.close")}
+                        onClick={onClose}
+                        className={styles.closeButton}
+                    />
+                </div>
+            )}
+            <Pivot
+                className={className}
+                selectedKey={activeTab}
+                onLinkClick={pivotItem => pivotItem && onActiveTabChanged(pivotItem.props.itemKey! as AnalysisPanelTabs)}
             >
-                <ThoughtProcess thoughts={answer.context.thoughts || []} />
-            </PivotItem>
-            <PivotItem
-                itemKey={AnalysisPanelTabs.SupportingContentTab}
-                headerText={t("headerTexts.supportingContent")}
-                headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
-            >
-                <SupportingContent supportingContent={answer.context.data_points} />
-            </PivotItem>
-            <PivotItem
-                itemKey={AnalysisPanelTabs.CitationTab}
-                headerText={t("headerTexts.citation")}
-                headerButtonProps={isDisabledCitationTab ? pivotItemDisabledStyle : undefined}
-            >
-                {renderFileViewer()}
-            </PivotItem>
-        </Pivot>
+                <PivotItem
+                    itemKey={AnalysisPanelTabs.ThoughtProcessTab}
+                    headerText={t("headerTexts.thoughtProcess")}
+                    headerButtonProps={isDisabledThoughtProcessTab ? pivotItemDisabledStyle : undefined}
+                >
+                    <ThoughtProcess thoughts={answer.context.thoughts || []} />
+                </PivotItem>
+                <PivotItem
+                    itemKey={AnalysisPanelTabs.SupportingContentTab}
+                    headerText={t("headerTexts.supportingContent")}
+                    headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
+                >
+                    <SupportingContent supportingContent={answer.context.data_points} />
+                </PivotItem>
+                <PivotItem
+                    itemKey={AnalysisPanelTabs.CitationTab}
+                    headerText={t("headerTexts.citation")}
+                    headerButtonProps={isDisabledCitationTab ? pivotItemDisabledStyle : undefined}
+                >
+                    {renderFileViewer()}
+                </PivotItem>
+            </Pivot>
+        </div>
     );
 };
