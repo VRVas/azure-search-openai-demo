@@ -1,165 +1,160 @@
 {
-    "pageTitle": "Assistant de politique générique",
-    "headerTitle": "Assistant de politique générique",
-    "chat": "Discussion",
-    "qa": "Poser une question",
-    "builtBy": "Créé par l'équipe Microsoft Qatar pour Generic",
-    "login": "Connexion",
-    "logout": "Déconnexion",
-    "clearChat": "Effacer la discussion",
-    "history": {
-        "chatHistory": "Historique des discussions",
-        "openChatHistory": "Ouvrir l'historique des discussions",
-        "noHistory": "Aucun historique de discussion",
-        "deleteModalTitle": "Supprimer l'historique des discussions",
-        "deleteModalDescription": "Cette action est irréversible. Supprimer cet historique de discussion ?",
-        "deleteLabel": "Supprimer",
-        "cancelLabel": "Annuler",
-        "today": "Aujourd'hui",
-        "yesterday": "Hier",
-        "last7days": "7 derniers jours",
-        "last30days": "30 derniers jours"
-    },
-    "upload": {
-        "fileLabel": "Télécharger un fichier :",
-        "uploadedFilesLabel": "Fichiers précédemment téléchargés :",
-        "noFilesUploaded": "Aucun fichier téléchargé pour le moment",
-        "loading": "Chargement...",
-        "manageFileUploads": "Gérer les téléchargements de fichiers",
-        "uploadingFiles": "Téléchargement des fichiers...",
-        "uploadedFileError": "Erreur lors du téléchargement du fichier - veuillez réessayer ou contacter l'administrateur.",
-        "deleteFile": "Supprimer le fichier",
-        "deletingFile": "Suppression du fichier...",
-        "errorDeleting": "Erreur lors de la suppression.",
-        "fileDeleted": "Fichier supprimé"
-    },
-    "developerSettings": "Paramètres développeur",
+  "pageTitle": "Assistant aux politiques QatarEnergy",
+  "headerTitle": "Assistant aux politiques QatarEnergy",
+    "chat": "Discussion sans profil",
+    "qa": "Discussion avec profil",
 
-    "chatEmptyStateTitle": "Assistant de politique générique",
-    "chatEmptyStateSubtitle": "Posez des questions sur les règlements, politiques et procédures de Generic.",
-    "defaultExamples": {
-        "1": "Que disent les règles sur les formations obligatoires contre le blanchiment d'argent ?",
-        "2": "Exigences pour la gestion du risque de crédit",
-        "3": "Procédures de reporting de supervision et d'inspection auprès de la QCB",
-        "placeholder": "Tapez une nouvelle question (par ex. donnez plus de détails ou quelles sont les exigences en matière de liquidité ?)"
+  "builtBy": "Conçu par l’équipe Microsoft Qatar pour QatarEnergy",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "clearChat": "Effacer la discussion",
+  "history": {
+    "chatHistory": "Historique de discussion",
+    "openChatHistory": "Ouvrir l’historique",
+    "noHistory": "Aucun historique",
+    "deleteModalTitle": "Supprimer l’historique",
+    "deleteModalDescription": "Cette action est irréversible. Supprimer cet historique ?",
+    "deleteLabel": "Supprimer",
+    "cancelLabel": "Annuler",
+    "today": "Aujourd’hui",
+    "yesterday": "Hier",
+    "last7days": "7 derniers jours",
+    "last30days": "30 derniers jours"
+  },
+  "upload": {
+    "fileLabel": "Importer un fichier :",
+    "uploadedFilesLabel": "Fichiers précédemment importés :",
+    "noFilesUploaded": "Aucun fichier importé",
+    "loading": "Chargement…",
+    "manageFileUploads": "Gérer les fichiers importés",
+    "uploadingFiles": "Importation des fichiers…",
+    "uploadedFileError": "Erreur d’importation du fichier – veuillez réessayer ou contacter l’administrateur.",
+    "deleteFile": "Supprimer le fichier",
+    "deletingFile": "Suppression du fichier…",
+    "errorDeleting": "Erreur lors de la suppression.",
+    "fileDeleted": "Fichier supprimé"
+  },
+  "developerSettings": "Paramètres développeur",
+  "chatEmptyStateTitle": "Assistant aux politiques QatarEnergy",
+  "chatEmptyStateSubtitle": "Posez n’importe quelle question sur les réglementations, politiques et procédures de QatarEnergy.",
+  "defaultExamples": {
+    "1": "Qu’est-ce que l’analyse « What-if » et quels sont quelques scénarios ?",
+    "2": "Exigences de formation pour la SCBA",
+    "3": "Exigences d’inspection pour les chariots élévateurs",
+    "placeholder": "Tapez une nouvelle question (par ex. plus de détails ou maintenance mensuelle des ponts roulants ?)"
+  },
+  "askTitle": "Interrogez vos données",
+  "gpt4vExamples": {
+    "1": "Qu’est-ce que l’analyse « What-if » et quels sont quelques scénarios ?",
+    "2": "Exigences de formation pour la SCBA",
+    "3": "Exigences d’inspection pour les chariots élévateurs",
+    "placeholder": "Tapez une nouvelle question (par ex. plus de détails ou maintenance mensuelle des ponts roulants ?)"
+  },
+  "generatingAnswer": "Génération de la réponse",
+  "citationWithColon": "Citation :",
+  "followupQuestions": "Questions de suivi :",
+  "tooltips": {
+    "submitQuestion": "Envoyer la question",
+    "askWithVoice": "Poser la question à la voix",
+    "stopRecording": "Arrêter l’enregistrement",
+    "showThoughtProcess": "Afficher le processus de réflexion",
+    "showSupportingContent": "Afficher le contenu d’appui",
+    "speakAnswer": "Lire la réponse",
+    "info": "Info",
+    "save": "Enregistrer",
+    "copy": "Copier",
+    "copied": "Copié !"
+  },
+  "headerTexts": {
+    "thoughtProcess": "Processus de réflexion",
+    "supportingContent": "Contenu d’appui",
+    "citation": "Citation"
+  },
+  "labels": {
+    "toggleMenu": "Basculer le menu",
+    "languagePicker": "Choisir la langue",
+    "headerText": "Configurer la génération de réponses",
+    "closeButton": "Fermer",
+    "promptTemplate": "Remplacer le modèle de prompt",
+    "temperature": "Température",
+    "seed": "Graine",
+    "minimumSearchScore": "Score de recherche minimum",
+    "minimumRerankerScore": "Score de réordination minimum",
+    "retrieveCount": "Nombre de résultats à récupérer :",
+    "maxSubqueryCount": "Nombre max de sous-requêtes",
+    "resultsMergeStrategy": "Stratégie de fusion des résultats",
+    "resultsMergeStrategyOptions": {
+      "interleaved": "Entrelacé",
+      "descending": "Descendant"
     },
-    "askTitle": "Interrogez vos données",
-    "gpt4vExamples": {
-        "1": "Comparez l'impact des taux d'intérêt et du PIB sur les marchés financiers.",
-        "2": "Quelle est la tendance attendue pour l'indice S&P 500 au cours des cinq prochaines années ? Comparez avec ses performances passées.",
-        "3": "Pouvez-vous identifier une corrélation entre les prix du pétrole et les tendances boursières ?",
-        "placeholder": "Exemple : Mon plan couvre-t-il les examens annuels de la vue ?"
+    "includeCategory": "Inclure la catégorie",
+    "includeCategoryOptions": {
+      "all": "Toutes"
     },
-    "generatingAnswer": "Génération de la réponse",
-    "citationWithColon": "Citation :",
-    "followupQuestions": "Questions complémentaires :",
-
-    "tooltips": {
-        "submitQuestion": "Soumettre la question",
-        "askWithVoice": "Poser la question par la voix",
-        "stopRecording": "Arrêter l'enregistrement de la question",
-        "showThoughtProcess": "Afficher le raisonnement",
-        "showSupportingContent": "Afficher le contenu d'appui",
-        "speakAnswer": "Lire la réponse à voix haute",
-        "info": "Infos",
-        "save": "Enregistrer",
-        "copy": "Copier",
-        "copied": "Copié !"
+    "excludeCategory": "Exclure la catégorie",
+    "useSemanticRanker": "Utiliser le ranker sémantique pour la récupération",
+    "useSemanticCaptions": "Utiliser les légendes sémantiques",
+    "useQueryRewriting": "Utiliser la réécriture de requête pour la récupération",
+    "reasoningEffort": "Effort de raisonnement",
+    "reasoningEffortOptions": {
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé"
     },
-
-    "headerTexts": {
-        "thoughtProcess": "Raisonnement",
-        "supportingContent": "Contenu d'appui",
-        "citation": "Citation"
+    "useSuggestFollowupQuestions": "Suggérer des questions de suivi",
+    "useAgenticRetrieval": "Utiliser la récupération agentique",
+    "useGPT4V": "Utiliser le modèle GPT vision",
+    "gpt4VInput": {
+      "label": "Entrées du modèle GPT vision",
+      "options": {
+        "textAndImages": "Images et texte",
+        "images": "Images",
+        "texts": "Texte"
+      }
     },
-
-    "labels": {
-        "toggleMenu": "Afficher/masquer le menu",
-        "languagePicker": "Sélectionnez votre langue",
-        "headerText": "Configurer la génération de réponses",
-        "closeButton": "Fermer",
-        "promptTemplate": "Modifier le modèle de prompt",
-        "temperature": "Température",
-        "seed": "Graine (Seed)",
-        "minimumSearchScore": "Score minimum de recherche",
-        "minimumRerankerScore": "Score minimum de reclassement",
-        "retrieveCount": "Nombre de résultats à récupérer :",
-        "maxSubqueryCount": "Nombre maximal de sous-requêtes",
-        "resultsMergeStrategy": "Stratégie de fusion des résultats",
-        "resultsMergeStrategyOptions": {
-            "interleaved": "Entrelacé",
-            "descending": "Décroissant"
-        },
-        "includeCategory": "Inclure la catégorie",
-        "includeCategoryOptions": {
-            "all": "Toutes"
-        },
-        "excludeCategory": "Exclure la catégorie",
-        "useSemanticRanker": "Utiliser le reclassement sémantique pour la recherche",
-        "useSemanticCaptions": "Utiliser des légendes sémantiques",
-        "useQueryRewriting": "Utiliser la reformulation de requêtes pour la recherche",
-        "reasoningEffort": "Effort de raisonnement",
-        "reasoningEffortOptions": {
-            "low": "Faible",
-            "medium": "Moyen",
-            "high": "Élevé"
-        },
-        "useSuggestFollowupQuestions": "Suggérer des questions complémentaires",
-        "useAgenticRetrieval": "Utiliser la récupération intelligente",
-        "useGPT4V": "Utiliser le modèle GPT Vision",
-        "gpt4VInput": {
-            "label": "Entrées du modèle GPT Vision",
-            "options": {
-                "textAndImages": "Images et texte",
-                "images": "Images",
-                "texts": "Texte"
-            }
-        },
-        "retrievalMode": {
-            "label": "Mode de récupération",
-            "options": {
-                "hybrid": "Vecteurs + Texte (Hybride)",
-                "vectors": "Vecteurs",
-                "texts": "Texte"
-            }
-        },
-        "vector": {
-            "label": "Champs vectoriels (Recherche vectorielle multi-requête)",
-            "options": {
-                "embedding": "Embeddings texte",
-                "imageEmbedding": "Embeddings image",
-                "both": "Embeddings texte et image"
-            }
-        },
-        "useOidSecurityFilter": "Utiliser le filtre de sécurité OID",
-        "useGroupsSecurityFilter": "Utiliser le filtre de sécurité des groupes",
-        "shouldStream": "Réponses continues en mode streaming"
+    "retrievalMode": {
+      "label": "Mode de récupération",
+      "options": {
+        "hybrid": "Vecteurs + Texte (Hybride)",
+        "vectors": "Vecteurs",
+        "texts": "Texte"
+      }
     },
-
-    "helpTexts": {
-        "promptTemplate": "Modifie le prompt utilisé pour générer la réponse basée sur la question et les résultats. Pour ajouter au prompt existant plutôt que le remplacer entièrement, commencez votre prompt par '>>>'.",
-        "temperature": "Définit la créativité de la réponse du modèle LLM. Une température élevée produit des réponses plus créatives, mais potentiellement moins précises.",
-        "seed": "Définit une graine pour améliorer la reproductibilité des réponses du modèle. Peut être un nombre entier quelconque.",
-        "searchScore": "Définit un score minimum pour les résultats provenant d'Azure AI Search. La plage dépend du mode utilisé (hybride, vecteurs ou texte).",
-        "rerankerScore": "Définit un score minimum de reclassement sémantique des résultats (entre 0 et 4).",
-        "retrieveNumber": "Définit le nombre de résultats à récupérer d'Azure AI Search.",
-        "maxSubqueryCount": "Nombre maximal de sous-requêtes utilisées par la récupération intelligente.",
-        "resultsMergeStrategy": "Définit la stratégie pour fusionner les résultats de plusieurs sous-requêtes.",
-        "includeCategory": "Spécifie une catégorie à inclure dans les résultats de recherche.",
-        "excludeCategory": "Spécifie une catégorie à exclure des résultats de recherche.",
-        "useSemanticReranker": "Active le reclassement sémantique dans Azure AI Search.",
-        "useQueryRewriting": "Active la reformulation des requêtes.",
-        "reasoningEffort": "Définit l'effort de raisonnement du modèle LLM.",
-        "useSemanticCaptions": "Envoie des légendes sémantiques au lieu des résultats complets.",
-        "suggestFollowupQuestions": "Demande au modèle de suggérer des questions complémentaires.",
-        "useGPT4Vision": "Utilise GPT-4 Vision pour générer des réponses à partir d'images et texte.",
-        "vectorFields": "Spécifie les champs vectoriels utilisés pour la recherche.",
-        "gpt4VisionInputs": "Définit ce qui sera envoyé au modèle Vision.",
-        "retrievalMode": "Définit le mode de récupération pour la recherche Azure AI.",
-        "streamChat": "Diffuse continuellement la réponse dans l’interface.",
-        "useOidSecurityFilter": "Filtre les résultats selon l'OID de l’utilisateur.",
-        "useGroupsSecurityFilter": "Filtre les résultats selon les groupes de l’utilisateur.",
-        "useAgenticRetrieval": "Utilise la récupération intelligente avec Azure AI Search."
-    }
+    "vector": {
+      "label": "Champs vectoriels (recherche multi-requêtes vectorielles)",
+      "options": {
+        "embedding": "Embeddings texte",
+        "imageEmbedding": "Embeddings image",
+        "both": "Embeddings texte et image"
+      }
+    },
+    "useOidSecurityFilter": "Utiliser le filtre de sécurité OID",
+    "useGroupsSecurityFilter": "Utiliser le filtre de sécurité des groupes",
+    "shouldStream": "Diffuser les réponses du chat"
+  },
+  "helpTexts": {
+    "promptTemplate": "Remplace le prompt utilisé pour générer la réponse en fonction de la question et des résultats de recherche. Pour ajouter au prompt existant plutôt que de remplacer entièrement le prompt, commencez votre prompt par '>>>'.",
+    "temperature": "Définit la température de la requête vers le LLM qui génère la réponse. Des températures plus élevées produisent des réponses plus créatives, mais peuvent être moins fiables.",
+    "seed": "Définit une graine pour améliorer la reproductibilité des réponses du modèle. La graine peut être n’importe quel entier.",
+    "searchScore": "Définit un score minimum pour les résultats de recherche provenant d’Azure AI Search. La plage de score dépend du mode (hybride, vecteurs uniquement ou texte uniquement).",
+    "rerankerScore": "Définit un score minimum pour les résultats réordonnés par le reranker sémantique. Le score varie toujours de 0 à 4. Plus le score est élevé, plus le résultat est sémantiquement pertinent pour la question.",
+    "retrieveNumber": "Définit le nombre de résultats de recherche à récupérer depuis Azure AI Search. Plus de résultats peuvent augmenter les chances de trouver la réponse correcte, mais peuvent entraîner une surcharge pour le modèle.",
+    "maxSubqueryCount": "Définit le nombre maximal de sous-requêtes à utiliser pour le plan de requête agentique.",
+    "resultsMergeStrategy": "Définit la stratégie de fusion des résultats de plusieurs sous-requêtes. « Entrelacé » prend les meilleurs résultats de chaque sous-requête en rotation, tandis que « Descendant » trie tous les résultats par score de réordination.",
+    "includeCategory": "Spécifie une catégorie à inclure dans les résultats de recherche. Aucune catégorie n’est utilisée dans l’ensemble de données par défaut.",
+    "excludeCategory": "Spécifie une catégorie à exclure des résultats de recherche. Aucune catégorie n’est utilisée dans l’ensemble de données par défaut.",
+    "useSemanticReranker": "Active le reranker sémantique dans Azure AI Search, un modèle qui réorganise les résultats en fonction de la similarité sémantique avec la requête de l’utilisateur.",
+    "useQueryRewriting": "Active la réécriture de requête dans Azure AI Search, un processus qui modifie la requête de l’utilisateur pour améliorer les résultats. Nécessite que le reranker sémantique soit activé.",
+    "reasoningEffort": "Définit l’effort de raisonnement pour le LLM. Des valeurs plus élevées entraînent plus de raisonnement, mais peuvent prendre plus de temps pour générer une réponse. La valeur par défaut est « Moyen ».",
+    "useSemanticCaptions": "Envoie des légendes sémantiques au LLM au lieu du résultat de recherche complet. Une légende sémantique est extraite d’un résultat pendant le classement sémantique.",
+    "suggestFollowupQuestions": "Demande au LLM de suggérer des questions de suivi basées sur la requête de l’utilisateur.",
+    "useGPT4Vision": "Utilise GPT-4-Turbo avec Vision pour générer des réponses basées sur des images et du texte de l’index.",
+    "vectorFields": "Spécifie quels champs d’embeddings dans l’index Azure AI Search seront recherchés : « Images et texte », « Images » uniquement ou « Texte » uniquement.",
+    "gpt4VisionInputs": "Définit ce qui sera envoyé au modèle Vision. « Images et texte » envoie les deux, « Images » envoie seulement les images et « Texte » envoie seulement le texte.",
+    "retrievalMode": "Définit le mode de récupération pour la requête Azure AI Search. « Vecteurs + Texte (Hybride) » utilise la recherche vectorielle et la recherche en texte intégral, « Vecteurs » n’utilise que la recherche vectorielle et « Texte » n’utilise que la recherche en texte intégral. L’hybride est généralement optimal.",
+    "streamChat": "Diffuse continuellement la réponse dans l’interface de chat au fur et à mesure de sa génération.",
+    "useOidSecurityFilter": "Filtrer les résultats de recherche en fonction de l’OID de l’utilisateur authentifié.",
+    "useGroupsSecurityFilter": "Filtrer les résultats de recherche en fonction des groupes de l’utilisateur authentifié.",
+    "useAgenticRetrieval": "Utilise la récupération agentique d’Azure AI Search pour la planification multi-requêtes. Utilise toujours le reranker sémantique."
+  }
 }
-

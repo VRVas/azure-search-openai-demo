@@ -1,9 +1,9 @@
 {
-    "pageTitle": "Generic Policy Assistant",
-    "headerTitle": "Generic Policy Assistant",
-    "chat": "Chat",
-    "qa": "Ask a question",
-    "builtBy": "Built by Microsoft Qatar Team for Generic",
+    "pageTitle": "QatarEnergy Policy Assistant",
+    "headerTitle": "QatarEnergy Policy Assistant",
+    "chat": "Chat without Profile",
+    "qa": "Chat with Profile",
+    "builtBy": "Built by Microsoft Qatar Team for QatarEnergy",
     "login": "Login",
     "logout": "Logout",
     "clearChat": "Clear chat",
@@ -35,20 +35,20 @@
     },
     "developerSettings": "Developer settings",
 
-    "chatEmptyStateTitle": "Generic Policy Assistant",
-    "chatEmptyStateSubtitle": "Ask anything about Generic regulations, policies, and procedures.",
+    "chatEmptyStateTitle": "QatarEnergy Policy Assistant",
+    "chatEmptyStateSubtitle": "Ask anything about QatarEnergy regulations, policies, and procedures.",
     "defaultExamples": {
-        "1": "What's in the rules for Anti Money Laundering trainings required?",
-        "2": "Requirements for credit risk management",
-        "3": "Supervisory and inspection reporting procedures to QCB",
-        "placeholder": "Type a new question (e.g. give more details or What are the liquidity requirements?)"
+        "1": "What is the 'What-if' analysis and what are some scenarios for it?",
+        "2": "Training requirements for the SCBA",
+        "3": "Inspection requirements for forklifts",
+        "placeholder": "Type a new question (e.g. give more details or 3 monthly maintenance of overhead travelling cranes?)"
     },
     "askTitle": "Ask your data",
     "gpt4vExamples": {
-        "1": "Compare the impact of interest rates and GDP in financial markets.",
-        "2": "What is the expected trend for the S&P 500 index over the next five years? Compare it to the past S&P 500 performance",
-        "3": "Can you identify any correlation between oil prices and stock market trends?",
-        "placeholder": "Example: Does my plan cover annual eye exams?"
+        "1": "What is the 'What-if' analysis and what are some scenarios for it?",
+        "2": "Training requirements for the SCBA",
+        "3": "Inspection requirements for forklifts",
+        "placeholder": "Type a new question (e.g. give more details or 3 monthly maintenance of overhead travelling cranes?)"
     },
     "generatingAnswer": "Generating answer",
     "citationWithColon": "Citation:",
