@@ -25,7 +25,8 @@ const router = createHashRouter([
             },
             {
                 path: "qa",
-                lazy: () => import("./pages/ask/Ask")
+                element: <Chat />
+                // lazy: () => import("./pages/ask/Ask") ----------------- ASK PAGE:TODO
             },
             {
                 path: "*",
