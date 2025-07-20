@@ -44,6 +44,36 @@
 .questionInputTextArea {
     width: 100%;
     line-height: 2.5rem;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
+}
+
+.questionInputTextArea input,
+.questionInputTextArea textarea {
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
 }
 
 .questionInputButtonsContainer {

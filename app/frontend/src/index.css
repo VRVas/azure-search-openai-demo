@@ -102,3 +102,62 @@ button[data-appearance="primary"]:hover {
     background-color: #369f73 !important;
     border-color: #369f73 !important;
 }
+
+/* FluentUI font overrides to ensure Rubik is used */
+.ms-TextField,
+.ms-TextField-field,
+.ms-TextField-fieldGroup,
+.ms-TextField input,
+.ms-TextField textarea,
+.ms-Dropdown,
+.ms-Dropdown-title,
+.ms-Dropdown-item,
+.ms-Panel,
+.ms-Panel-content,
+.ms-Button,
+.ms-CommandButton,
+.ms-Pivot,
+.ms-Pivot-link,
+.ms-Pivot-text,
+.ms-Modal,
+.ms-Modal-main,
+.ms-Dialog,
+.ms-Dialog-content,
+.ms-Label,
+.ms-Checkbox-label,
+.ms-Toggle-label,
+.ms-Slider,
+.ms-SearchBox,
+.ms-SearchBox-field {
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
+}
+
+/* FluentUI v9 components font overrides */
+[data-fluent="true"],
+[data-fluent-react="true"] {
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
+}
