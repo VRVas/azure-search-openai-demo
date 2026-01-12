@@ -21,3 +21,9 @@ def load_azd_env():
         raise Exception("No default azd env file found")
     logger.info(f"Loading azd env from {env_file_path}")
     load_dotenv(env_file_path, override=True)
+
+
+    
+
+
+
