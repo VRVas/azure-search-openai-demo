@@ -3,5 +3,57 @@
     align-items: center;
     gap: 0.375em;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.25rem;
+}
+
+.container button {
+    background: linear-gradient(135deg, rgba(66, 178, 136, 0.85) 0%, rgba(54, 159, 115, 0.85) 100%) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow:
+        0 4px 12px rgba(66, 178, 136, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.container button::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left 0.5s !important;
+}
+
+.container button:hover {
+    background: linear-gradient(135deg, rgba(54, 159, 115, 0.85) 0%, rgba(45, 138, 95, 0.85) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow:
+        0 8px 20px rgba(66, 178, 136, 0.35),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.container button:hover::before {
+    left: 100% !important;
+}
+
+.container button:active {
+    transform: translateY(0px) !important;
+    box-shadow:
+        0 2px 8px rgba(66, 178, 136, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }

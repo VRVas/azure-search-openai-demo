@@ -5,20 +5,14 @@
 html {
     background: #f2f2f2;
     font-size: 12px; /* Root font size for 320px width screens */
-    font-family:
-        "Segoe UI",
-        -apple-system,
-        BlinkMacSystemFont,
-        "Roboto",
-        "Oxygen",
-        "Ubuntu",
-        "Cantarell",
-        "Fira Sans",
-        "Droid Sans",
-        "Helvetica Neue",
-        sans-serif;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    /* Enhanced text rendering for Arabic support */
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
 }
 
 body {
@@ -53,4 +47,117 @@ body {
     html {
         font-size: 16px; /* Standard size for desktops */
     }
+}
+
+/* Arabic language and RTL support */
+html[lang="ar"],
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Improved Arabic text rendering */
+*[lang="ar"],
+*[lang="ar-QA"],
+.arabic-text {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+}
+
+/* Mixed content support (Arabic + English) */
+.mixed-content {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    unicode-bidi: plaintext;
+    text-align: start;
+}
+
+/* Button color overrides */
+/* Primary buttons and FluentUI button overrides */
+button[data-variant="primary"],
+.ms-Button--primary,
+button.ms-Button--primary {
+    background-color: #42b288 !important;
+    border-color: #42b288 !important;
+}
+
+button[data-variant="primary"]:hover,
+.ms-Button--primary:hover,
+button.ms-Button--primary:hover {
+    background-color: #369f73 !important;
+    border-color: #369f73 !important;
+}
+
+/* FluentUI v9 Button component overrides */
+button[data-appearance="primary"] {
+    background-color: #42b288 !important;
+    border-color: #42b288 !important;
+}
+
+button[data-appearance="primary"]:hover {
+    background-color: #369f73 !important;
+    border-color: #369f73 !important;
+}
+
+/* FluentUI font overrides to ensure Rubik is used */
+.ms-TextField,
+.ms-TextField-field,
+.ms-TextField-fieldGroup,
+.ms-TextField input,
+.ms-TextField textarea,
+.ms-Dropdown,
+.ms-Dropdown-title,
+.ms-Dropdown-item,
+.ms-Panel,
+.ms-Panel-content,
+.ms-Button,
+.ms-CommandButton,
+.ms-Pivot,
+.ms-Pivot-link,
+.ms-Pivot-text,
+.ms-Modal,
+.ms-Modal-main,
+.ms-Dialog,
+.ms-Dialog-content,
+.ms-Label,
+.ms-Checkbox-label,
+.ms-Toggle-label,
+.ms-Slider,
+.ms-SearchBox,
+.ms-SearchBox-field {
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
+}
+
+/* FluentUI v9 components font overrides */
+[data-fluent="true"],
+[data-fluent-react="true"] {
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif !important;
 }

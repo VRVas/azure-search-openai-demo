@@ -9,6 +9,12 @@ param environmentName string
 @description('Primary location for all resources')
 param location string = resourceGroup().location
 
+@description('Location for Azure Container Apps resources')
+param containerAppsLocation string = 'westeurope'
+
+var containerAppsToken = toLower(uniqueString(subscription().id, environmentName, containerAppsLocation))
+
+
 param appServicePlanName string = '' // Set in main.parameters.json
 param backendServiceName string = '' // Set in main.parameters.json
 param resourceGroupName string = '' // Set in main.parameters.json
@@ -514,17 +520,17 @@ module acaIdentity 'core/security/aca-identity.bicep' = if (deploymentTarget == 
   scope: resourceGroup()
   params: {
     identityName: acaIdentityName
-    location: location
+    location: containerAppsLocation
   }
 }
-
+// location here was the variable <location> - hardcoded to westeurope for now
 module containerApps 'core/host/container-apps.bicep' = if (deploymentTarget == 'containerapps') {
   name: 'container-apps'
   scope: resourceGroup()
   params: {
     name: 'app'
     tags: tags
-    location: location
+    location:  containerAppsLocation         
     workloadProfile: azureContainerAppsWorkloadProfile
     containerAppsEnvironmentName: acaManagedEnvironmentName
     containerRegistryName: '${containerRegistryName}${resourceToken}'
@@ -542,7 +548,7 @@ module acaBackend 'core/host/container-app-upsert.bicep' = if (deploymentTarget 
   ]
   params: {
     name: !empty(backendServiceName) ? backendServiceName : '${abbrs.webSitesContainerApps}backend-${resourceToken}'
-    location: location
+    location: containerAppsLocation
     identityName: (deploymentTarget == 'containerapps') ? acaIdentityName : ''
     exists: webAppExists
     workloadProfile: azureContainerAppsWorkloadProfile

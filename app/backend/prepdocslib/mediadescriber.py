@@ -44,7 +44,7 @@ class ContentUnderstandingDescriber:
 
     async def poll_api(self, session, poll_url, headers):
 
-        @retry(stop=stop_after_attempt(60), wait=wait_fixed(2), retry=retry_if_exception_type(ValueError))
+        @retry(stop=stop_after_attempt(180), wait=wait_fixed(5), retry=retry_if_exception_type(ValueError))
         async def poll():
             async with session.get(poll_url, headers=headers) as response:
                 response.raise_for_status()

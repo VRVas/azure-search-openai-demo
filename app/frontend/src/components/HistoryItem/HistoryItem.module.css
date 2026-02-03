@@ -5,6 +5,19 @@
     padding: 4px 8px;
     border-radius: 6px;
     transition: background-color 0.2s;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .historyItem:hover {
@@ -19,10 +32,36 @@
     background: none;
     border: none;
     cursor: pointer;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .historyItemTitle {
     font-size: 1rem;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .deleteIcon {
@@ -72,6 +111,19 @@
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
     max-width: 400px;
     width: 100%;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .modalTitle {
@@ -79,11 +131,37 @@
     font-weight: 600;
     margin-top: 0px;
     margin-bottom: 16px;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .modalDescription {
     margin-top: 0px;
     margin-bottom: 16px;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .modalActions {
@@ -107,7 +185,7 @@
 }
 
 .modalConfirmButton {
-    background-color: #ef4444;
+    background-color: #42b288;
     color: white;
 }
 
@@ -116,5 +194,5 @@
 }
 
 .modalConfirmButton:hover {
-    background-color: #dc2626;
+    background-color: #369f73;
 }

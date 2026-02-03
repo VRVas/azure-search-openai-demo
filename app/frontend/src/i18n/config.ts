@@ -85,7 +85,8 @@ import HttpApi from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 import enTranslation from "../locales/en/translation.json";
-import arTranslation from "../locales/ar/translation.json"; // <-- add this
+import arTranslation from "../locales/ar/translation.json"; 
+import frTranslation from "../locales/fr/translation.json";
 
 export const supportedLngs: { [key: string]: { name: string; locale: string } } = {
     en: {
@@ -95,6 +96,10 @@ export const supportedLngs: { [key: string]: { name: string; locale: string } } 
     ar: {
         name: "العربية",
         locale: "ar-QA"
+    },
+    fr: {
+        name: "Français",
+        locale: "fr-FR"
     }
 };
 
@@ -105,7 +110,8 @@ i18next
     .init({
         resources: {
             en: { translation: enTranslation },
-            ar: { translation: arTranslation }
+            ar: { translation: arTranslation },
+            fr: { translation: frTranslation }
         },
         fallbackLng: "en",
         supportedLngs: Object.keys(supportedLngs),

@@ -6,6 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { initializeIcons } from "@fluentui/react";
 
 import "./index.css";
+import "./arabic-support.css";
 
 import Chat from "./pages/chat/Chat";
 import LayoutWrapper from "./layoutWrapper";
@@ -24,7 +25,8 @@ const router = createHashRouter([
             },
             {
                 path: "qa",
-                lazy: () => import("./pages/ask/Ask")
+                element: <Chat />
+                // lazy: () => import("./pages/ask/Ask") ----------------- ASK PAGE:TODO
             },
             {
                 path: "*",

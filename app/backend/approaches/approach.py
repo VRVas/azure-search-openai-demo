@@ -203,6 +203,17 @@ class Approach(ABC):
     ) -> list[Document]:
         search_text = query_text if use_text_search else ""
         search_vectors = vectors if use_vector_search else []
+
+        # DOCUMENT FILTER: Limit search to specific document only
+        # Use double quotes to avoid issues with single quotes in filename
+        document_filter = "sourcefile eq 'IS-HSE-PRC-013 PROCEDURE FOR QATARENERGY-IS RESPIRATORY PROTECTION.pdf'"
+        
+        # Combine with existing filter if provided
+        if filter:
+            filter = f"({filter}) and ({document_filter})"
+        else:
+            filter = document_filter
+        
         if use_semantic_ranker:
             results = await self.search_client.search(
                 search_text=search_text,

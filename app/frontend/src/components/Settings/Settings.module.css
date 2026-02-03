@@ -1,5 +1,18 @@
 .settingsSeparator {
     margin-top: 0.75rem;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .option-slider {
@@ -8,6 +21,19 @@
     margin: 20px auto;
     position: relative;
     user-select: none;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .slider-track {
@@ -23,13 +49,26 @@
     top: 0;
     width: 33.33%;
     height: 40px;
-    background: #0078d4;
+    background: #42b288;
     border-radius: 20px;
     color: #fff;
     text-align: center;
     line-height: 40px;
     transition: left 0.3s ease;
     cursor: pointer;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .slider-options {
@@ -39,6 +78,19 @@
     top: 0;
     width: 100%;
     height: 40px;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .slider-option {
@@ -47,6 +99,19 @@
     line-height: 40px;
     color: #333;
     cursor: pointer;
+    font-family:
+        "Rubik",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
 }
 
 .slider-option.active {

@@ -1,0 +1,415 @@
+/* Arabic and RTL Support Styles */
+
+/* Global RTL support */
+[dir="rtl"] {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="ltr"] {
+    text-align: left;
+    direction: ltr;
+}
+
+/* Arabic-specific font optimizations */
+:lang(ar) {
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+/* Input fields RTL support */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] .input-field {
+    text-align: right;
+    direction: rtl;
+    padding-right: 12px;
+    padding-left: 40px;
+}
+
+[dir="ltr"] input,
+[dir="ltr"] textarea,
+[dir="ltr"] .input-field {
+    text-align: left;
+    direction: ltr;
+    padding-left: 12px;
+    padding-right: 40px;
+}
+
+/* Button and UI element RTL adaptations */
+[dir="rtl"] .button-with-icon {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .button-with-icon > *:first-child {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+[dir="ltr"] .button-with-icon > *:first-child {
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+/* Chat message alignment */
+[dir="rtl"] .chat-message {
+    text-align: right;
+}
+
+[dir="rtl"] .chat-message-container {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .chat-avatar {
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+[dir="ltr"] .chat-avatar {
+    margin-right: 12px;
+    margin-left: 0;
+}
+
+/* Code blocks should always be LTR, even in Arabic context */
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] .code-block,
+[dir="rtl"] .language-code {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: embed;
+}
+
+/* Navigation and menu RTL support */
+[dir="rtl"] .navigation-menu {
+    text-align: right;
+}
+
+[dir="rtl"] .menu-item {
+    padding-right: 16px;
+    padding-left: 8px;
+}
+
+[dir="ltr"] .menu-item {
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+/* Mixed content handling (Arabic + English) */
+.mixed-content {
+    unicode-bidi: plaintext;
+}
+
+/* Ensure proper spacing for Arabic text */
+:lang(ar) p,
+:lang(ar) div,
+:lang(ar) span {
+    word-spacing: 0.1em;
+}
+
+/* Search and filter input RTL support */
+[dir="rtl"] .search-input,
+[dir="rtl"] .filter-input {
+    background-position: right 12px center;
+    padding-right: 40px;
+    padding-left: 12px;
+}
+
+[dir="ltr"] .search-input,
+[dir="ltr"] .filter-input {
+    background-position: left 12px center;
+    padding-left: 40px;
+    padding-right: 12px;
+}
+
+/* Table RTL support */
+[dir="rtl"] table {
+    direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+    text-align: right;
+}
+
+[dir="ltr"] th,
+[dir="ltr"] td {
+    text-align: left;
+}
+
+/* Modal and dialog RTL support */
+[dir="rtl"] .modal-header,
+[dir="rtl"] .dialog-header {
+    text-align: right;
+}
+
+[dir="rtl"] .modal-close-button,
+[dir="rtl"] .dialog-close-button {
+    left: 16px;
+    right: auto;
+}
+
+[dir="ltr"] .modal-close-button,
+[dir="ltr"] .dialog-close-button {
+    right: 16px;
+    left: auto;
+}
+
+/* Form elements RTL support */
+[dir="rtl"] .form-group label {
+    text-align: right;
+}
+
+[dir="rtl"] .checkbox-group,
+[dir="rtl"] .radio-group {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .checkbox-group input,
+[dir="rtl"] .radio-group input {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+[dir="ltr"] .checkbox-group input,
+[dir="ltr"] .radio-group input {
+    margin-right: 8px;
+    margin-left: 0;
+}
+
+/* Tooltip RTL support */
+[dir="rtl"] .tooltip {
+    text-align: right;
+}
+
+/* Breadcrumb RTL support */
+[dir="rtl"] .breadcrumb {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .breadcrumb-separator::before {
+    content: "‹";
+}
+
+[dir="ltr"] .breadcrumb-separator::before {
+    content: "›";
+}
+
+/* Enhanced Arabic typography */
+:lang(ar) h1,
+:lang(ar) h2,
+:lang(ar) h3,
+:lang(ar) h4,
+:lang(ar) h5,
+:lang(ar) h6 {
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Responsive Arabic text adjustments */
+@media (min-width: 768px) {
+    :lang(ar) {
+        line-height: 1.8;
+    }
+}
+
+/* Accessibility improvements for Arabic */
+:lang(ar):focus {
+    outline-offset: 2px;
+}
+
+/* Print styles for Arabic */
+@media print {
+    :lang(ar) {
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+}
+=======
+/* Arabic language specific styling */
+[lang="ar"],
+[lang="ar-QA"],
+[lang="ar-SA"],
+[lang="ar-EG"] {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif !important;
+    text-align: right;
+    direction: rtl;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+}
+
+/* Better Arabic text rendering for specific components */
+.arabic-text {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    font-feature-settings:
+        "liga" 1,
+        "kern" 1;
+    word-spacing: 0.1em;
+}
+
+/* Mixed content (Arabic + English) */
+.mixed-content {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    direction: rtl;
+    text-align: start;
+    unicode-bidi: plaintext;
+}
+
+/* Chat messages in Arabic */
+.chat-message[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Input fields for Arabic */
+input[lang="ar"],
+textarea[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Button text in Arabic */
+button[lang="ar"],
+.button-arabic {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+}
+
+/* Ensure proper spacing for Arabic characters */
+.arabic-text p,
+.mixed-content p {
+    margin-bottom: 1em;
+    word-spacing: 0.1em;
+}
+
+/* Better number formatting in Arabic context */
+.arabic-numbers {
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Improved list styling for Arabic */
+ul[lang="ar"],
+ol[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+ul[lang="ar"] li,
+ol[lang="ar"] li {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Code blocks should remain LTR even in Arabic context */
+code,
+pre {
+    direction: ltr;
+    text-align: left;
+    font-family: "Fira Code", "Courier New", monospace !important;
+}
+
+/* Headings in Arabic */
+h1[lang="ar"],
+h2[lang="ar"],
+h3[lang="ar"],
+h4[lang="ar"],
+h5[lang="ar"],
+h6[lang="ar"] {
+    font-family: "Rubik", "Segoe UI", Arial, sans-serif;
+    text-align: right;
+    direction: rtl;
+    font-weight: 600;
+}
+
+/* Form elements in Arabic context */
+.form-group[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+.form-group[lang="ar"] label {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Navigation elements in Arabic */
+.nav[lang="ar"],
+.navigation[lang="ar"] {
+    direction: rtl;
+}
+
+.nav[lang="ar"] a,
+.navigation[lang="ar"] a {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Table content in Arabic */
+table[lang="ar"] {
+    direction: rtl;
+}
+
+table[lang="ar"] th,
+table[lang="ar"] td {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Search and input components */
+.search-box[lang="ar"] {
+    direction: rtl;
+}
+
+.search-box[lang="ar"] input {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Modal and dialog content */
+.modal[lang="ar"],
+.dialog[lang="ar"] {
+    direction: rtl;
+}
+
+.modal[lang="ar"] .modal-content,
+.dialog[lang="ar"] .dialog-content {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Tooltip and popup content */
+.tooltip[lang="ar"],
+.popup[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Ensure icons and symbols align properly in RTL */
+.rtl-icon {
+    transform: scaleX(-1);
+}
+
+/* Loading indicators and progress bars */
+.loading[lang="ar"],
+.progress[lang="ar"] {
+    direction: rtl;
+}
+
+/* Error and success messages */
+.error[lang="ar"],
+.success[lang="ar"],
+.warning[lang="ar"],
+.info[lang="ar"] {
+    text-align: right;
+    direction: rtl;
+}
+>>>>>>> 1a70c2d (Added RTL & Font)

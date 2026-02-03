@@ -256,7 +256,7 @@ export const Settings = ({
                 min={1}
                 max={50}
                 defaultValue={retrieveCount.toString()}
-                onChange={(_ev, val) => onChange("retrieveCount", parseInt(val || "3"))}
+                onChange={(_ev, val) => onChange("retrieveCount", parseInt(val || "5"))}     // RETRIEVAL COUNT DEFAULT
                 aria-labelledby={retrieveCountId}
                 onRenderLabel={props => renderLabel(props, retrieveCountId, retrieveCountFieldId, t("helpTexts.retrieveNumber"))}
             />
